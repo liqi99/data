@@ -74,7 +74,7 @@ def isToTopDown(x_amp,x_obj,code,name,x_now=None):
             return False,False
         else:
             rate_h, rate_l = 0.2,-0.2
-    elif code.startswith('8') or code.startswith('4'): 
+    elif code.startswith('8') or code.startswith('4') or code.startswith('9'): 
         if name.startswith('N'):
             rate_h,rate_l = False,False
         else:
@@ -94,7 +94,7 @@ def isToTopDown(x_amp,x_obj,code,name,x_now=None):
     #    print(x_today,x_yest)
     #    exit()
 
-    if abs(x_obj-toTop)<1e-3 or abs(x_obj-toTop-0.01)<1e-5: return True,False
+    if abs(x_obj-toTop)<1e-3 or abs(x_obj-toTop-0.01)<1e-5 or ((toTop-x_obj<=0.01) and toTop/x_yest>1.30): return True,False
     if abs(x_obj-toLow)<1e-3 or abs(x_obj-toLow+0.01)<1e-5: return False,True
     else: 
         return False,False
